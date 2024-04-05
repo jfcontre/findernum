@@ -1,0 +1,14 @@
+server:
+  port: 8080
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+openapi:
+  info:
+    title: "Finder Number Remainder API"
+    description: "Find the maximum integer within a given range that leaves a specific remainder"
+    version: "@project.version@"
+    license:
+      name: MIT
+      url: "https://opensource.org/licenses/MIT"

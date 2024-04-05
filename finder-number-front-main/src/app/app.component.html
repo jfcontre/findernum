@@ -1,0 +1,53 @@
+<main class="main">
+  <div class="content">
+    <h1>Calcular el número maximo</h1>
+    <p>Dado tres números enteros X, Y y N. encontrar el máximo entero K tal que 0 <= K <=N y que K mod X=Y</p>
+        <form [formGroup]="formData"  class="form">
+          <div class="form-group">
+            <label for="valueX" class="form-label">Valor x</label>
+            <input type="number" class="form-input" formControlName="valueX" id="valueX">
+            @if(isNotValidField("valueX")){
+            <span>{{getFieldError('valueX')}} </span>
+            }
+
+          </div>
+          <div class="form-group">
+            <label for="valueY" class="form-label">Valor y</label>
+            <input type="number" class="form-input" formControlName="valueY" id="valueY">
+            @if(isNotValidField("valueY")){
+            <span>{{getFieldError('valueY')}} </span>
+            }
+          </div>
+          <div class="form-group">
+            <label for="valueN" class="form-label">Valor n</label>
+            <input type="number" class="form-input" formControlName="valueN" id="valueN">
+            @if(isNotValidField("valueN")){
+            <span>{{getFieldError('valueN')}} </span>
+            }
+          </div>
+          <div class="button-group">
+            <button type="submit" class="form-submit-btn" (click)="handleSubmit('GET')" >Calcular con GET</button>
+            <button type="submit" class="form-submit-btn" (click)="handleSubmit('POST')">Calcular con POST</button>
+          </div>
+          
+        </form>
+
+        <div class="content-result" >
+          @if(loading){
+          <p>Obteniendo resultado</p>
+          }@else if(result()){
+          <p>El número “K” es : <span class="result"> {{result()}} </span> </p>
+          }
+        </div>
+
+
+        @if (errorResponse()) {
+        <div class="error">
+          <span>❗ </span> <span>{{errorResponse()}}</span>
+        </div>
+        }
+
+  </div>
+</main>
+
+<router-outlet />
